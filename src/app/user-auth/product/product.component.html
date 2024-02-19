@@ -1,0 +1,81 @@
+<div class="heading w-11 m-auto text-xl font-bold pt-3 pb-3 ">Product List</div>
+
+
+<div class="card w-11 m-auto border-1 border-300 shadow-3 border-round-lg">
+    <p-table [resizableColumns]="true" [scrollable]="true" scrollHeight="400px" styleClass="p-datatable-gridlines"
+        [value]="products" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[5, 10, 20]" >
+        <ng-template pTemplate="header" >
+            <tr  class="bg-blue-100">
+                <th pResizableColumn pSortableColumn="title">Name <p-sortIcon field="title"></p-sortIcon></th>
+                <th pResizableColumn pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
+                <!-- <th>Image</th> -->
+                <th pResizableColumn pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                <th pResizableColumn>Sold status</th>
+                <th pResizableColumn pSortableColumn="dateOfSale">Date of Sale <p-sortIcon
+                        field="dateOfSale"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr class="cursor-pointer hover:bg-blue-100" (click)="onSelect(product)" >
+                <td>{{ product.title.substr(0,35) }}...</td>
+                <td>{{ product.category }}</td>
+                <!-- <td><img [src]="product.image" [alt]="product.title" width="100" class="shadow-4" /></td> -->
+                <td>{{ product.price | currency : "INR":true:"1.2-3" }}</td>
+                <td><i class="pi"
+                        [ngClass]="{ 'text-green-500 pi-check-circle': product.sold, 'text-red-500 pi-times-circle': !product.sold }"></i>
+                </td>
+                <td>{{ product.dateOfSale | date : "dd MMM yyyy" }}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+</div>
+
+
+<!-- <div class="btnCont">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">
+        <img src="https://img.icons8.com/material-outlined/20/back--v1.png" alt="back--v1" class="icon" /> Previous
+    </button>
+    <span>
+        {{ currentPage }}
+    </span>
+    <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= products.length">
+        Next <img src="https://img.icons8.com/material-outlined/20/forward.png" alt="forward" class="icon" />
+    </button>
+</div>
+<table class="table">
+    <thead>
+        <tr class="headRow">
+            <th id="idCol">Id</th>
+            <th>Name</th>
+            <th id="priceCol">Price</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th id="soldCol">Sold</th>
+            <th>Date Of Sale</th>
+            <th id="imgCol">Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr (click)="onSelect(prod)" *ngFor="let prod of getDisplayedProducts()" class="prodRow">
+            <th> {{prod.id}} </th>
+            <th> {{prod.title.substr(0,20)}}.. </th>
+            <th> {{prod.price | number:"1.2-3"}} </th>
+            <th> {{prod.description.substr(0,30)}}... </th>
+            <th> {{prod.category | titlecase}} </th>
+            <th> {{prod.sold}} </th>
+            <th> {{prod.dateOfSale.substr(0,10).split("-").reverse().join("-")}} </th>
+            <th>
+                <img src={{prod.image}} alt="" class="prodImg">
+            </th>
+        </tr>
+    </tbody>
+</table> -->

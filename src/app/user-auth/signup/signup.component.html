@@ -1,0 +1,64 @@
+<div class="form-container">
+    <div class="heading">Create your account</div>
+    <form method="post" >
+        <div class="input-field">
+            <label class="authlabel" htmlFor="email"> <i class="fa-solid fa-user"></i> &nbsp;Full name </label>
+            <input class="authinput" type="text" name="username" ngModel />
+        </div>
+        <div class="input-field">
+            <label class="authlabel" htmlFor="email">
+                <i class="fa-solid fa-envelope"></i> &nbsp;Email Id
+            </label>
+            <input class="authinput" type="email"  placeholder="example123@gamil.com" />
+        </div>
+        <div class="input-field">
+
+            <label class="authlabel" htmlFor="password">
+                <i class="fa-solid fa-lock"></i> &nbsp;Password
+            </label>
+
+            <!-- ⬜ input box -->
+            <input #password
+                class="authinput" type="password" name="password" id="password"
+                placeholder="Make a strong password" />
+
+            <!-- 👀 eyes -->
+            <span #openEye class="eyeIcon oi" id="openEye" (click)="showPassword(password, closeEye, openEye)">
+                <i class="fa-solid fa-eye "></i>
+            </span>
+            <span #closeEye class="eyeIcon ci" id="closeEye" (click)="hidePassword(password, closeEye, openEye)">
+                <i class="fa-solid fa-eye-slash "></i>
+            </span>
+
+            <!-- ✔ Password checker -->
+            <div *ngIf="show else elseblock" class="verify-cont flex">
+                <div>
+                    <div class="tags" #chars id="chars">
+                        <i class="fa-solid fa-check checkIcon" #charCheck id="charCheck"></i>
+                        &nbsp; Minimum 8 characters 
+                    </div>
+                    <div class="tags" #symbol id="symbol">
+                        <i class="fa-solid fa-check checkIcon" #symCheck id="symCheck"></i>
+                        &nbsp; Atleast one symbol
+                    </div>
+                </div>
+                <div>
+                    <div class="tags" #capital id="capital">
+                        <i class="fa-solid fa-check checkIcon" #capCheck id="capCheck"></i>
+                        &nbsp; Atleast one capital letter
+                    </div>
+                    <div class="tags" #num id="num">
+                        <i class="fa-solid fa-check checkIcon" #numCheck id="numCheck"></i>
+                        &nbsp; Atleast one number
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn primary">Create my account</button>
+    </form>
+</div>
+
+<ng-template #elseblock>
+    <p class="tags">Choose a strong password to enhance the security</p>
+</ng-template>

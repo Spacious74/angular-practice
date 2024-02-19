@@ -1,0 +1,12 @@
+<div class="flex justify-content-between text-white bg-bluegray-400 align-items-center p-2 pl-4 pr-4 ">
+    <div class="font-bold text-lg ">MYSITE</div>
+    <div class="header-nav flex gap-2 align-items-center">
+        <a href="#" (click)="HomeClicked()">HOME</a>
+        <a href="#" (click)="AdminClicked()">ADMIN</a>
+        <p-button [raised]="true" severity="success" (onClick)="subscribe()" [rounded]="true">SUBSCRIBE</p-button>
+    </div>
+</div>
+<div [ngSwitch]="selectedTab">
+    <app-home *ngSwitchCase="'home'"></app-home>
+    <app-admin *ngSwitchCase="'admin'"></app-admin>
+</div>

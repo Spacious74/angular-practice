@@ -1,0 +1,10 @@
+<div class="searchbar flex flex-column gap-2 w-9 m-auto mt-5 mb-5">
+    <div class="flex">
+        <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input type="text" pInputText [(ngModel)]="searchText" />
+        </span>
+        <p-button label="Search"></p-button>
+    </div>
+    <span class="text">Search results for : '<b>{{searchText}}</b>'</span>
+</div>

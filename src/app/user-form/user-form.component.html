@@ -1,0 +1,88 @@
+<div class="form-container min-w-5">
+    <form #userForm="ngForm"
+        class="form w-7 bg-white p-4 border-round-lg shadow-3 border-1 border-primary-500 flex flex-column gap-4">
+
+        <!-- Heading -->
+        <div class="heading font-bold text-xl text-blue-600 text-center mb-3">Create your account</div>
+        <!-- {{ userForm.value | json }} -->
+
+        <div class="flex gap-3 w-full">
+            <!-- FULL NAME -->
+            <div class=" input-field flex flex-column gap-2 w-full">
+                <label for="username">Full Name</label>
+                <span class="p-input-icon-left w-full">
+                    <i class="pi pi-user"></i>
+                    <input required #name="ngModel" type="text" name="username" pInputText class="w-full"
+                        [(ngModel)]="username" />
+                </span>
+                <span class="text-sm text-red-500" *ngIf="!name.valid && name.touched">Name is required</span>
+            </div>
+
+
+            <!-- EMAIL -->
+            <div class="input-field flex flex-column gap-2 w-full">
+                <label for="email">Email</label>
+                <span class="p-input-icon-left w-full">
+                    <i class="pi pi-at"></i>
+                    <input type="email" name="email" pInputText class="w-full" [(ngModel)]="email" />
+                </span>
+            </div>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="input-field flex flex-column gap-2">
+            <label for="password">Password</label>
+            <span class="p-input-icon-left w-full">
+                <i class="pi pi-key"></i>
+                <input type="password" name="password" pInputText class="w-full" ngModel />
+            </span>
+        </div>
+
+        <!-- ADDRESS -->
+        <div ngModelGroup="address" class="flex gap-3 w-full">
+            <div class=" input-field flex flex-column gap-2 w-full">
+                <label for="username">Street</label>
+                <span class="p-input-icon-left w-full">
+                    <i class="pi pi-building"></i>
+                    <input type="text" name="street" pInputText class="w-full" ngModel />
+                </span>
+            </div>
+            <div class=" input-field flex flex-column gap-2 w-full">
+                <label for="username">City</label>
+                <span class="p-input-icon-left w-full">
+                    <i class="pi pi-home"></i>
+                    <input type="text" name="city" pInputText class="w-full" ngModel />
+                </span>
+            </div>
+        </div>
+
+
+
+        <div class="input-field flex flex-row justify-content-start gap-2">
+            <input type="checkbox" name="subscribe" ngModel id="subscribe" />
+            <label style="cursor: pointer;" for="subscribe">Subscribe me</label>
+        </div>
+
+        <div class="input-field flex flex-column gap-2">
+            <label>Role</label>
+            <div class="flex align-items-center gap-2">
+                <input type="radio" name="role" id="user" value="user" [(ngModel)]="user_role">
+                <label style="cursor: pointer;" for="user">User</label>
+            </div>
+            <div class="flex align-items-center gap-2">
+                <input type="radio" name="role" id="teacher" value="teacher" [(ngModel)]="user_role">
+                <label style="cursor: pointer;" for="teacher">Teacher</label>
+            </div>
+            <div class="flex align-items-center gap-2">
+                <input type="radio" name="role" id="admin" value="admin" [(ngModel)]="user_role">
+                <label style="cursor: pointer;" for="admin">Admin</label>
+            </div>
+        </div>
+
+        <div class="input-field flex justify-content-end w-full mt-2">
+            <p-button [disabled]="userForm.form.invalid" (onClick)="showData(userForm)" label="Submit" [rounded]="true"
+                [raised]="true" icon="pi pi-send" iconPos="right"></p-button>
+        </div>
+
+    </form>
+</div>

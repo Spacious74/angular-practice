@@ -1,0 +1,83 @@
+<div class="form-container w-full h-screen flex align-items-center justify-content-center ">
+
+    <!-- FORM -->
+    <form [formGroup]="registerForm"
+        class="form m-auto w-6 bg-white p-4 border-round-lg shadow-3 border-1 border-blue-200 flex flex-column gap-1">
+
+        <!-- HEADING -->
+        <div class="heading font-bold text-xl text-blue-600 text-center mb-3">Create your account</div>
+
+        <!-- {{registerForm.value | json}} -->
+
+        <!-- FULL NAME -->
+        <div class="field flex flex-column gap-1">
+            <label for="username">Full name</label>
+            <input formControlName="username" [class.border-red-500]="userName?.invalid && userName?.touched"
+                type="text" pInputText />
+            <!-- <span *ngIf="userName?.invalid && userName?.touched" class="text-xs text-red-500 ">Username is
+                required</span> -->
+
+            <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+                <span *ngIf="userName?.errors?.['required']" class="text-xs text-red-500 ">Username is required</span>
+                <span *ngIf="userName?.errors?.['minlength']" class="text-xs text-red-500 ">Full name must be 3
+                    characters long...</span>
+            </div>
+
+        </div>
+
+        <div class="flex flex-row gap-3 ">
+
+            <!-- PASSWORD -->
+            <div class="field flex flex-column gap-1 w-6 ">
+                <label for="password">Password</label>
+                <p-password placeholder="Password should be strong" formControlName="password" [toggleMask]="true"
+                    [inputStyle]="{'width':'100%'}" [style]="{'width':'100%'}"></p-password>
+            </div>
+
+            <!-- CONFIRM PASSWORD -->
+            <div class="field flex flex-column gap-1 w-6  ">
+                <label for="cn-password">Confirm password</label>
+                <p-password [class.ng-invalid.shadow-2]="(pass?.value != cpass?.value)"
+                    formControlName="confirmPassword" [feedback]="false" [toggleMask]="true"
+                    [inputStyle]="{'width':'100%'}" [style]="{'width':'100%'}"></p-password>
+                <span *ngIf="(pass?.value != cpass?.value) && cpass?.touched" class="text-xs text-red-500">Not
+                    matching with the original one</span>
+            </div>
+        </div>
+
+        <div formGroupName="address" class="flex flex-row gap-3">
+            <!-- CITY -->
+            <div class="flex flex-column gap-1 w-4">
+                <label for="city">City</label>
+                <input formControlName="city" [class.border-red-500]="City?.invalid && City?.touched" type="text"
+                    pInputText />
+            </div>
+
+            <!-- ZIP CODE -->
+            <div class="flex flex-column gap-1 w-3">
+                <label for="zip">Zip</label>
+                <input formControlName="zip" type="text" pInputText />
+            </div>
+
+
+        </div>
+
+        <!-- STATE CODE -->
+        <div class="flex flex-column gap-1 w-full">
+            <label for="state">State</label>
+            <p-dropdown formControlName="state" [options]="cities" optionLabel="name"
+                placeholder="Select City"></p-dropdown>
+        </div>
+
+
+
+        <!-- SUBMIT BUTTON -->
+        <div class="flex flex-row gap-2 mt-3 ">
+            <p-button [disabled]="registerForm.invalid" label="Submit" icon="pi pi-send" iconPos="right"></p-button>
+            <p-button label="Load data" (onClick)="loadData()" [outlined]="true" icon="pi pi-arrow-down"
+                iconPos="right"></p-button>
+        </div>
+    </form>
+
+
+</div>

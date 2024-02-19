@@ -1,0 +1,13 @@
+<div class="filter w-9 m-auto text-lg mt-4 mb-4 ">
+    <app-filter [totalProd]="total" [solded]="soldcount" [unsold]="unsoldcount"
+        (selectionEvent)="optionChanges($event)"></app-filter>
+</div>
+<div class="flex flex-wrap gap-3 justify-content-between  pt-3 pb-3 m-auto w-9 h-screen overflow-scroll ">
+    <ng-container *ngFor="let prod of products" (click)="selectMyProduct(prod)">
+        <app-product-card 
+        *ngIf="filterOption === 'all' || prod.sold.toString() == filterOption"    
+        [product]="prod"
+        style="width : 22%;"
+        ></app-product-card>
+    </ng-container>
+</div>

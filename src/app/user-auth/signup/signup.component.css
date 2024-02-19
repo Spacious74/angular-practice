@@ -1,0 +1,114 @@
+.form-container {
+  box-sizing: border-box;
+  width: 500px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 80px;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 12px 30px -12px #34517dd2;
+}
+.form-container .heading {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  margin-bottom: 2rem;
+  color: #34517d;
+  letter-spacing: 1px;
+}
+.input-field {
+  position: relative;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+.input-field input {
+  padding: 10px 15px;
+  border: solid 1px #cacaca;
+  font-size: 1rem;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  position: relative;
+}
+.input-field input:focus {
+  outline: solid 2px #91ebbf;
+}
+.input-field label {
+  color: #444444;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+  letter-spacing: 1px;
+}
+.input-field .eyeIcon {
+  font-size: 1.2rem;
+  color: #444444;
+  position: absolute;
+  right: 15px;
+  top: 35%;
+  cursor: pointer;
+}
+.input-field .ci {
+  display: none;
+}
+.input-field .verify-cont {
+  justify-content: left;
+  gap: 20px;
+}
+.input-field .verify-cont .tags {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: #bbbbbb;
+  transition: all 0.3s ease;
+}
+.tags .checkIcon {
+  display: none;
+}
+.form-container button {
+  width: 100%;
+  padding: 10px;
+}
+
+.login-container .text {
+  font-size: 1.1rem;
+  font-weight: bolder;
+  margin-top: -15px;
+  background-color: #d2e2fc;
+  width: 30px;
+  text-align: center;
+}
+
+.login-container hr {
+  border: none;
+  height: 2px;
+  background-color: #d3d3d3;
+  border-radius: 100px;
+  min-width: 500px;
+  margin-top: 10px;
+}
+
+.login-container .authLink {
+  text-decoration: underline;
+  color: #34517d;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+.btn {
+  border: none;
+  border-radius: 8px;
+  background-color: #34517d;
+  padding: 8px 0px;
+  color: #fff;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #243c61;
+}
